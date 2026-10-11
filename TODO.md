@@ -1,0 +1,8 @@
+# CompassCam implementation status
+
+- [x] **Transparent camera screen:** Camera permission is requested only after an explicit action. The foreground preview has a clear `CAMERA ACTIVE` label and is unmounted when leaving the screen or backgrounding the app. No fake chat, hidden capture, or powered-off imitation is present.
+- [x] **Capture controls:** The app provides an on-screen shutter and Android volume-up/down listeners while the visible camera screen is active. Successful captures trigger Expo Haptics' heavy impact. Volume controls are explained in the UI.
+- [x] **Private photo vault:** JPEGs are encrypted with AES-256-GCM in app-private documents storage. The key uses Android Keystore-backed SecureStore. No shared photo-library/storage permission, cloud sync, or automatic gallery export is implemented; Android app backup is disabled.
+- [x] **Protected access:** Android system authentication is required before decrypting. The app locks on background and clears temporary decrypted previews. Explicit export/share is offered only after unlocking. There is no app-level pattern reset or remote recovery; permanent data-loss conditions are documented.
+- [x] **Plain-local handoff and static validation:** The project is local, the custom native build requirement is documented, and TypeScript, lint, Expo Doctor, Android prebuild, and Android JS export checks passed.
+- [ ] **Device-level validation:** The sandbox has no Android SDK or attached Android device. A signed APK and physical-device checks of camera, volume keys, haptics, and system-auth behavior remain to be performed on a local Android SDK/device.
